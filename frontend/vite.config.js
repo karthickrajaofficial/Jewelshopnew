@@ -1,13 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
 
-// https://vitejs.dev/config/
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env.development
+dotenv.config({ path: '.env.development' });
+
 export default defineConfig({
   plugins: [react()],
-  server : {
-   proxy : {
-    "/api/" : "http://localhost:5000",
-    "/uploads/":"http://localhost:5000",
-   }
-  }
-})
+});
